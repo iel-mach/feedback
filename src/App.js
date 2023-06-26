@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import React from "react";
 import Header from "./components/Header";
 import FeedbackList from "./components/FeedbackList";
@@ -14,11 +15,15 @@ const App = () => {
       setFeedback(feedback.filter((item) => item.id !== id));
     }
   };
+  const addFeedback = (newFeedback) => {
+    newFeedback.id = uuidv4();
+    setFeedback([newFeedback, ...feedback]);
+  };
   return (
     <>
       <Header />
       <div className="container">
-        <FeedbackForm />
+        <FeedbackForm handlAdd={addFeedback} />
         <FeedbackStats feedback={feedback} />
         <FeedbackList feedback={feedback} handlDelete={deleteFeedback} />
       </div>
