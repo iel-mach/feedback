@@ -62,6 +62,7 @@ export const FeedbackProvider = ({ children }) => {
         editFeedback,
         feedbackEdit,
         updateFeedback,
+        isloading,
       }}
     >
       {children}
